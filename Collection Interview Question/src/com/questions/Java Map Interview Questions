@@ -1,0 +1,162 @@
+Java Map Interview Questions
+***************************
+
+1. What is a Map in Java?
+
+Answer: A map in Java is a container object that stores elements as key and value pairs. A key is a unique element (object) that serves as an “index” in the map.
+
+The element that is associated with a key is called value. A map stores the values associated with keys.
+
+2. Can we store primitive type values in Map keys and values?
+
+Answer: In the map, both keys and values must be objects, not primitive type.
+
+3. What is one-to-one mapping in Java?
+
+Answer: Each key maps to only one value. This type of mapping is called one-to-one mapping in java.
+
+4. Can we have duplicate keys in Map?
+
+Answer: No, all keys must be unique, but values may be duplicate (i.e. we can store the same value to several keys).
+
+5. What are the classes that implement Map interface?
+
+Answer: Java classes that implement Map interface are:
+
+AbstractMap
+EnumMap
+HashMap
+TreeMap
+LinkedHashMap
+WeakHashMap
+IdentityHashMap
+6. Does Map extend the Collections framework in Java?
+
+Answer: Map is a part of the Java collections framework, but it does not extend the collection interface.
+
+7. What is the fundamental difference between a Set and a Map in Java?
+
+Answer: The fundamental differences between a Set and a Map in Java are:
+
+1. A Set does not allow to insert duplicate elements. While a Map does not allow using duplicate keys, but it allows to insert duplicate values for unique keys.
+
+2. A Set allows to insert only one null value. In a Map we can have a single null key at most and many null values.
+
+3. A Set does not maintain any order of elements. LinkedHashSet that is subclasses of Set interface can sort elements in an order.
+
+A Map does not maintain any order of its elements. TreeMap that implements Map interface store elements of the map in the ascending order of keys.
+
+8. How will you decide when to use a List, Set or a Map collection in Java?
+
+Answer: (a) If you want a collection that does not store duplicate values, then use a Set.
+
+(b) If you want to access elements operations based on an index value frequently, then use a List. E.g. ArrayList.
+
+(c) If you want to maintain the insertion order of elements in a collection, then use a List based collection.
+
+(d) For fast search operation based on a key-value pair, use a HashMap based collection.
+
+(e) If you want to maintain a collection of elements in a natural sorted order, the use a TreeSet based collection.
+
+9. How to create Map object in Java?
+
+Answer: You can create an object of the map using any of its three concrete classes: HashMap, LinkedHashMap, or TreeMap.
+
+The general syntax to create a map object is as follows:
+
+a) Map<K, V> map = new HashMap<>(); // It creates an empty map.
+b) Map<K, V> map = new HashMap<>(Map m); // It creates a map with initializing elements of m.
+10. Can we use any user-defined class as Map key?
+
+Answer: Yes, we can use any user-defined class as Map key.
+
+11. Which method will you use to add an entry with a specified key and value to the map?
+
+Answer: Map provides a method named put(K key, V value) that adds an entry with a specified key and value to a map.
+
+12. Which method will you use to get the value for the specified key in the map?
+
+Answer: get(Object key) method
+
+13. What is the output of the following code?
+
+import java.util.HashMap;
+import java.util.Map;
+public class Test {
+public static void main(String[] args) 
+{
+ Map<Integer, String> map = new HashMap<>();
+ map.put(101, "Red");
+ map.put(103, "Green");
+ map.put(102, "Yellow");
+ 
+ Map<Integer,String> map2 = new HashMap<>();
+ map2.put(115, "Brown");
+ map2.put(120, "Purple");
+ map.putAll(map2);
+ System.out.println(map);
+ }
+}
+Output:
+       {115=Brown, 101=Red, 102=Yellow, 103=Green, 120=Purple}
+14. What is the output of the following program?
+
+import java.util.HashMap;
+import java.util.Map;
+public class Test {
+public static void main(String[] args) 
+{
+ Map<Integer, String> map = new HashMap<>();
+ map.put(101, "Red");
+ map.put(103, "Green");
+ map.put(102, "Yellow");
+ map.remove(104);
+ map.remove(106,"Pink");
+ System.out.println(map);
+ }
+Output:
+      {101=Red, 102=Yellow, 103=Green}
+15. Is there any error in the program? If not, what is the output of program code?
+
+import java.util.HashMap;
+import java.util.Map;
+public class Test {
+public static void main(String[] args) 
+{
+ Map<String, String> map = new HashMap<>();
+ map.put("A", "Apple");
+ map.put("B", "Boy");
+ map.put("C", "Cat");
+ map.replace("C", "Element");
+ map.remove("A","Apple");
+ System.out.println(map);
+ }
+}
+Output:
+      {B=Boy, C=Element}
+16. Is code will compile successfully? If yes, what will be the output of the following code?
+
+import java.util.HashMap;
+import java.util.Map;
+public class Test {
+public static void main(String[] args) 
+{
+ Map<String, String> map = new HashMap<>();
+ map.put("V", "Violet");
+ map.put("I", "Indigo");
+ map.put("B", "Blue");
+ map.put("G", "Green");
+ map.put("Y", "Yellow");
+ 
+ String value = map.get("B");
+ System.out.println(value);
+ boolean entryKey = map.containsKey("B");
+ System.out.println(entryKey);
+ boolean entryValue = map.containsValue("Brown");
+ System.out.println(entryValue);
+ }
+}
+Output:
+      Blue
+      true
+      false
